@@ -1,0 +1,181 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>无标题文档</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/select.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+		<script type="text/javascript" src="js/select-ui.min.js"></script>
+		<script type="text/javascript" src="editor/kindeditor.js"></script>
+
+		<script type="text/javascript">
+			KE.show({
+				id: 'content7',
+				cssPath: './index.css'
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function(e) {
+				$(".select1").uedSelect({
+					width: 345
+				});
+				$(".select2").uedSelect({
+					width: 167
+				});
+				$(".select3").uedSelect({
+					width: 100
+				});
+			});
+		</script>
+		<script>
+			function checkTopic1() {
+				var utopic1 = document.getElementById("topic1").value;
+				var utopic1Tip = document.getElementById("topic1Tip");
+				var reg = /^[a-zA-Z\u4e00-\u9fa5]{2,30}$/;
+				if(!reg.test(utopic1)) {
+					utopic1Tip.innerHTML = "题目不合法！";
+					utopic1Tip.style = "color:red";
+				} else {
+					utopic1Tip.innerHTML = "";
+				}
+			}
+			
+			function checkLeader() {
+				var uleader = document.getElementById("leader").value;
+				var uleaderTip = document.getElementById("leaderTip");
+				var reg = /^[\u4e00-\u9fa5]{2,6}$/;
+				if(!reg.test(uleader)) {
+					uleaderTip.innerHTML="组长姓名不合法！";
+					uleaderTip.style="color:red";
+				} else {
+					uleaderTip.innerHTML="";
+				}
+			}
+			
+			function checkGmember() {
+				var ugmember = document.getElementById("gmember").value;
+				var ugmemberTip = document.getElementById("gmemberTip");
+				var reg = /^[\u4e00-\u9fa5]{2,6}$/;
+				if(!reg.test(ugmember)) {
+					ugmemberTip.innerHTML="组员姓名不合法！";
+					ugmemberTip.style="color:red";
+				} else {
+					ugmemberTip.innerHTML="";
+				}
+			}
+			
+			function checkTeacher() {
+				var uteacher = document.getElementById("teacher").value;
+				var uteacherTip = document.getElementById("teacherTip");
+				var reg = /^[\u4e00-\u9fa5]{2,6}$/;
+				if(!reg.test(uteacher)) {
+					uteacherTip.innerHTML="指导老师姓名不合法！";
+					uteacherTip.style="color:red";
+				} else {
+					uteacherTip.innerHTML="";
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div class="place">
+			<span>位置：</span>
+			<ul class="placeul">
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">参赛信息导入</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="formbody">
+
+			<div id="tab1" class="tabson">
+				<ul class="forminfo">
+					<li>
+						<label>竞赛类别<b>*</b></label>
+
+						<div class="vocation">
+							<select class="select1">
+								<option>请选择</option>
+								<option>创新训练项目</option>
+								<option>创业训练项目</option>
+								<option>创业实践</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<label>年度<b>*</b></label>
+						<input placeholder="请输入年度" name="classid" type="text" class="dfinput" style="width:345px;" />
+					</li>
+					<li>
+						<label>题目<b>*</b></label>
+						<input id="topic1" onblur="checkTopic1()" placeholder="2-30个汉字字母组合" name="classid" type="text" class="dfinput" style="width:345px;" />
+						<i id="topic1Tip"></i>
+					</li>
+					
+					<li>
+						<label>组长<b>*</b></label>
+						<input id="leader" onblur="checkLeader()" placeholder="2-6个汉字" name="classid" type="text" class="dfinput" style="width:345px;" />
+						<i id="leaderTip"></i>
+					</li>
+					<li>
+						<label>组员<b>*</b></label>
+						<input id="gmember" onblur="checkGmember()" placeholder="2-6个汉字" name="classid" type="text" class="dfinput" style="width:345px;" />
+						<i id="gmemberTip"></i>
+					</li>
+					
+					<li>
+						<label>获奖等级<b>*</b></label>
+
+						<div class="vocation">
+							<select class="select1">
+								<option selected="selected">无</option>
+								<option>特等</option>
+								<option>一等</option>
+								<option>二等</option>
+								<option>三等</option>
+								<option>优秀奖</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<label>指导老师<b>*</b></label>
+						<input id="teacher" onblur="checkTeacher()" placeholder="2-6个汉字" name="classid" type="text" class="dfinput" style="width:345px;" />
+						<i id="teacherTip"></i>
+					</li>
+					
+					
+					
+					
+
+					
+					<li><label>&nbsp;</label><input name="" type="button" class="btn" value="保存" /></li>
+				</ul>
+
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+			$("#usual1 ul").idTabs();
+		</script>
+
+		<script type="text/javascript">
+			$('.tablelist tbody tr:odd').addClass('odd');
+		</script>
+
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,201 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>无标题文档</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/select.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+		<script type="text/javascript" src="js/select-ui.min.js"></script>
+		<script type="text/javascript" src="editor/kindeditor.js"></script>
+
+		<script type="text/javascript">
+			KE.show({
+				id: 'content7',
+				cssPath: './index.css'
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function(e) {
+				$(".select1").uedSelect({
+					width: 345
+				});
+				$(".select2").uedSelect({
+					width: 167
+				});
+				$(".select3").uedSelect({
+					width: 100
+				});
+			});
+		</script>
+
+		<script>
+			function checkRealname() {
+				var urname = document.getElementById("realname").value;
+				var urnameTip = document.getElementById("realnameTip");
+				var reg = /^[\u4e00-\u9fa5]{2,5}$/;
+				if(!reg.test(urname)) {
+					urnameTip.innerHTML = "姓名不合法！";
+					urnameTip.style = "color:red";
+				} else {
+					urnameTip.innerHTML = "";
+				}
+			}
+
+			function checkNum() {
+				var unum = document.getElementById("num").value;
+				var unumTip = document.getElementById("numTip");
+				var reg = /^[0-9]*$/;
+				if(!reg.test(unum)) {
+					unumTip.innerHTML = "学号不合法！";
+					unumTip.style = "color:red";
+				} else {
+					unumTip.innerHTML = "";
+				}
+			}
+
+			function checkPhone1() {
+				var uphonenum1 = document.getElementById("phonenum1").value;
+				var uphonenum1Tip = document.getElementById("phonenum1Tip");
+				var reg = /^[0-9]{11}$/;
+				if(!reg.test(uphonenum1)) {
+					uphonenum1Tip.innerHTML = "电话号不合法！";
+					uphonenum1Tip.style = "color:red";
+				} else {
+					uphonenum1Tip.innerHTML = "";
+				}
+			}
+		</script>
+
+		<script type="text/javascript">
+			window.onload = function() {
+				var span = document.getElementById("timenow");
+
+				var now = new Date();
+
+				var year = now.getFullYear();
+				var month = now.getMonth() + 1;
+				var day = now.getDate();
+
+				var hours = now.getHours(); //小时
+				var minutes = now.getMinutes(); //分钟
+				var seconds = now.getSeconds(); //秒
+
+				if(month < 10) {
+					month = "0" + month;
+				}
+
+				if(day < 10) {
+					day = "0" + day;
+				}
+
+				span.value = year + "年" + month + "月" + day + "日" + "  " + hours + ":" + minutes + ":" + seconds;
+				
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div class="place">
+			<span>位置：</span>
+			<ul class="placeul">
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">录入学分</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="formbody">
+
+			<div id="tab1" class="tabson">
+				<ul class="forminfo">
+					<li>
+						<label>姓名<b>*</b></label>
+						<input id="realname" onblur="checkRealname()" placeholder="2-5个汉字" name="classid" type="text" class="dfinput" style="width:345px;" />
+						<i id="realnameTip"></i>
+					</li>
+					<li>
+						<label>学号<b>*</b></label>
+						<input onblur="checkNum()" id="num" placeholder="请输入学号" name="Input0" type="text" class="dfinput" style="width:345px;" />
+						<i id="numTip"></i>
+					</li>
+					<li>
+						<label>年级<b>*</b></label>
+						<input placeholder="请输入年级" name="Input" type="text" class="dfinput" style="width:345px;" />
+					</li>
+					<li>
+						<label>院系<b>*</b></label>
+
+						<div class="vocation">
+							<select class="select1">
+								<option selected="selected">请选择</option>
+								<option>软件学院</option>
+								<option>大数据学院</option>
+								<option>理学院</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<label>分值<b>*</b></label>
+						<input placeholder="请输入分值" name="Input" type="text" class="dfinput" style="width:345px;" />
+					</li>
+					<!--学校列表开始-->
+					<li>
+						<label>事由<b>*</b></label>
+
+						<div class="vocation">
+							<select class="select1">
+								<option selected="selected">公开课</option>
+								<option>创新竞赛</option>
+								<option>选修课程</option>
+							</select>
+						</div>
+					</li>
+					<!--学校列表结束-->
+
+					<li><label>取得日期<b>*</b></label>
+						<input name="Input" type="month" class="dfinput" style="width:345px;" />
+					</li>
+
+					<li><label>录入时间<b>*</b></label>
+						<input id="timenow" readonly="readonly" name="Input" type="text" class="dfinput" 
+							style="width:345px; background-image: url(#) ; background-color: #E0E0E0;" />
+					</li>
+					
+					<li><label>录入人<b>*</b></label>
+						<input value="yhj" readonly="readonly" name="Input" type="text" class="dfinput" 
+							style="width:345px; background-image: url(#) ; background-color: #E0E0E0;" />
+					</li>
+
+					
+
+					<li><label>备注<b style="color: black;">*</b></label>
+
+						<textarea id="content7" name="content" style="width:700px;height:250px;visibility:hidden;"></textarea>
+					</li>
+					<li><label>&nbsp;</label><input name="" type="button" class="btn" value="保存" /></li>
+				</ul>
+
+			</div>
+
+			<script type="text/javascript">
+				$("#usual1 ul").idTabs();
+			</script>
+
+			<script type="text/javascript">
+				$('.tablelist tbody tr:odd').addClass('odd');
+			</script>
+
+		</div>
+
+	</body>
+
+</html>
